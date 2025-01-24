@@ -28,23 +28,35 @@ def get_link_poems(author_url):
 
     results=[]
     content=soup.find_all("a", href=True) #Find all names with associated links
-    print(content)
-
-
     ## ARREGLAR FUNCION
     for label in content:
-        if (label["href"].endswith('htm')) and (label["href"].startswith("https:")): # Only poems URL has https and .htm in their URL
-           results.append((label['href'], label.text))
+        if (label["href"].endswith('htm')) and ("poemas" not in label["href"]): # Only poems URL has https and .htm in their URL
+           results.append(label['href'])
     return results
-    
+
+
+def get_poems(poems_url): ## A list full of poems links, it's necessary complete links
+
+    results=[]
+    for poem_url in poems_url:
+        
+        poem_url='https://www.poemas-del-alma.com/'+poem_url
+        r = requests.get(poem_url)
+        soup=bs4.BeautifulSoup(r.text, features="html.parser")
+        poem_title=soup.find("h1").get_text()
+        poem_content=soup.find("p").get_text(separator='\n')
+        results.append((poem_title, poem_content))
+
+    return results
 
 
 def main():
     authors=get_authors('a')
-    link, name = authors[10]
-    print("Author's name: ", name) ## <a href="abu-l-qasim-ben-al-saqqat-fiesta-en-un-jardin.htm">Fiesta en un jardín
-    html=get_link_poems(link)
-    print(html)
+    link_author, name_author = authors[6]
+    print("Author's name: ", name_author)
+    poems_url = get_link_poems(link_author)
+    poems = get_poems(poems_url)
+    print(poems)
 
 if __name__== "__main__":
     main()
