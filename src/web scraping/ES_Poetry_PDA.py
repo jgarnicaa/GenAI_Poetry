@@ -28,17 +28,21 @@ def get_link_poems(author_url):
 
     results=[]
     content=soup.find_all("a", href=True) #Find all names with associated links
-    for label in content:
-        if "blog" not in label['href']: # Take only URL that match with inital char of author
-           results.append((label['href'], label.text))
+    print(content)
 
+
+    ## ARREGLAR FUNCION
+    for label in content:
+        if (label["href"].endswith('htm')) and (label["href"].startswith("https:")): # Only poems URL has https and .htm in their URL
+           results.append((label['href'], label.text))
     return results
     
 
 
 def main():
     authors=get_authors('a')
-    link, name = authors[0]
+    link, name = authors[10]
+    print("Author's name: ", name) ## <a href="abu-l-qasim-ben-al-saqqat-fiesta-en-un-jardin.htm">Fiesta en un jardín
     html=get_link_poems(link)
     print(html)
 
