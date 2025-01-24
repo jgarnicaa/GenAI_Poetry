@@ -49,8 +49,20 @@ def get_poems(poems_url): ## A list full of poems links, it's necessary complete
         print(poem_url)
         r = requests.get(poem_url)
         soup=bs4.BeautifulSoup(r.text, features="html.parser")
-        poem_title=soup.find("h1", class_="title-poem").get_text()
-        poem_content=soup.find("p").get_text(separator='\n')
+        title_element=soup.find("h1", class_="title-poem")
+        if title_element:
+            poem_title = title_element.get_text()
+        else:
+            poem_title = "NaN"
+        
+    
+        poem_element=soup.find("p")
+
+        if poem_element:
+            poem_content=poem_element.get_text(separator='\n')
+        else:
+            poem_content="NaN"
+            
         poems_content.append(poem_content)
         poems_titles.append(poem_title)
         
@@ -76,9 +88,10 @@ def get_dataset(name, titles, poem):
 
 def main():
     abc=['a', 'b', 'c', 'd', 'e', 'd', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-    authors = [author for lettre in abc for author in get_authors(lettre)]
 
-    with open("PoemasDelAlmaDataset.csv", 'w', newline='', encoding='utf-8') as csvfile:
+    authors = [author for lettre in abc for author in get_authors(lettre)] ## Get all authors
+
+    with open("PoemasDelAlmaDataset.csv", 'w', newline='', encoding='utf-8') as csvfile: ## Write directly to .csv
         fieldnames= ["Title", "Poem", "Author"]
         writer=csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
         writer.writeheader()
@@ -91,12 +104,7 @@ def main():
                 writer.writerow({'Title':titles_poem[i], 
                                  'Poem':content_poems[i], 
                                  "Author":name_author})
-        #dataset_temp=get_dataset(name_author,titles_poem,content_poems)
-    print("Done")
-        #dataset = pd.concat([dataset, dataset_temp], ignore_index=True)
-
-    #print(dataset)
-
+    print("Done! ")
 
 if __name__== "__main__":
     main()
