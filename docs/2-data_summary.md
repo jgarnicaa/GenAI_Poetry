@@ -46,7 +46,14 @@ The dataset contains a total of **25,563** samples. The English dataset has **5 
 
 ## Data Quality Summary
 
-The main quality issue is the length of some poems and inconsistencies in line breaks. After filtering out excessively long poems, the distribution improves.
+The main quality issue is the length of some poems and inconsistencies in line breaks. 
+
+![image](https://github.com/user-attachments/assets/2994d288-5f5e-43ad-ab50-7880637f05fc)
+
+
+After filtering out excessively long poems, the distribution improves.
+
+![image](https://github.com/user-attachments/assets/474c567f-57e1-48af-8024-ecd01a40837d)
 
 ## Target Variable
 
