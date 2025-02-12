@@ -1,4 +1,8 @@
-torch==2.1.1
-transformers==4.48.3
 fastapi
 uvicorn
+torch==2.1.1
+transformers==4.48.3
+numpy<2
+sentencepiece
+tokenizers
+pydantic

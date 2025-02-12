@@ -10,9 +10,10 @@ COPY requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-#Copy API code
+#Copy API code and model
 COPY . .
-
+COPY model/fine-tuned-gpt2-poetry /app/model
 #Port 8000 and FastAPI execution
 EXPOSE 8000
+
 CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
