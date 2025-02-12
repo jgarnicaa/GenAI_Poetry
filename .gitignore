@@ -173,3 +173,7 @@ cython_debug/
 
 data/
 /data
+
+.secrets
+mlruns/
+model/
