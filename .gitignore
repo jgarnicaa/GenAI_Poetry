@@ -177,3 +177,4 @@ data/
 .secrets
 mlruns/
 model/
+Poetry.pem

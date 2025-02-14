@@ -1,0 +1,2 @@
+ssh -i "tu-clave.pem" ubuntu@tu-ip-publica
+
