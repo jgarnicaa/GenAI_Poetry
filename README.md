@@ -1,29 +1,64 @@
-# GenAI Poetry
+# GenAI Poetry - AI-Powered Poetry Generator
 
-**Generative AI for Poetry in Spanish and English**
+## 📌 Project Overview
+GenAI Poetry is an AI-powered poetry generator capable of creating poems in **English and Spanish**. The model was fine-tuned from **GPT-2** to specialize in poetry generation, ensuring coherent and creative outputs. The application consists of a **backend** (FastAPI) handling the model inference and a **frontend** (Streamlit) providing an interactive web interface.
 
-## Overview
+## 🚀 Project Structure
+The repository contains the following directories:
 
-GenAI_Poetry is a project in Generative AI to create poetry in both Spanish and English. The model is fine-tuned on state-of-the-art large language model (LLM) GPT2 and is deployed through a web application utilizing Amazon AWS services for its architecture.
+- **`backend/`** - Contains the FastAPI backend, including model inference logic and API endpoints.
+- **`frontend/`** - Contains the Streamlit web interface for user interaction.
+- **`webapp/`** - Main folder for deployment, containing backend, frontend, and Docker configuration.
+- **`model/`** - Stores the fine-tuned GPT-2 model (must be downloaded separately).
+- **`data/`** - Includes datasets used for training the model.
+- **`docs/`** - Documentation and architecture diagrams.
 
-## Project Structure
+## 🛠️ Running the Project Locally
+### **Prerequisites**
+Ensure you have the following installed:
+- **Python 3.8+**
+- **Docker & Docker Compose**
 
-- **data**: Contains the DVC file linked to regenerate data from S3 Bucket.
-- **src**: Source code for data processing, model training, and deployment.
-- **webapp**: Code for the web application that allows users to generate poetry.
+### **1️⃣ Clone the Repository**
+```bash
+git clone https://github.com/jgarnicaa/GenAI_Poetry.git
+cd GenAI_Poetry
+```
 
-## Datasets
+### **2️⃣ Download the Model**
+Download the fine-tuned GPT-2 model and place it in `webapp/backend/model/`:
+```bash
+wget -P webapp/backend/ https://genaipoetry-bucket.s3.eu-west-3.amazonaws.com/model/
+```
 
-The project utilizes two primary datasets:
+### **3️⃣ Run the Application**
+Start the application using Docker Compose:
+```bash
+cd webapp
+docker-compose up --build -d
+```
 
-1. **English Poetry Dataset**: Sourced from the [Poetry Foundation Poems](https://www.kaggle.com/datasets/tgdivy/poetry-foundation-poems) available on Kaggle.
-2. **Spanish Poetry Dataset**: Collected through web scraping from [Poemas del Alma](https://www.poemas-del-alma.com) and made publicly available [here](https://www.kaggle.com/datasets/jgarnicaaza/spanish-poetry-dataset-dataset-poemas-en-espaol).
+### **4️⃣ Access the Web Interface**
+Once running, access the poetry generator at:
+```bash
+http://0.0.0.0:8501
+```
 
-## Getting Started
+## 🌍 Accessing the Live Version on AWS EC2
+If deployed on an AWS EC2 instance, access the application using the public IP:
+```bash
+http://13.39.47.61:8501
+```
 
-To get started with this project, follow these steps:
+Ensure that the EC2 security group allows inbound traffic on port **8501**.
 
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/jgarnicaa/GenAI_Poetry.git
-   cd GenAI_Poetry
+## 📜 License
+This project is licensed under the MIT License. Feel free to use and modify it!
+
+## 🤝 Contributing
+Contributions are welcome! Fork the repo and submit a pull request with improvements.
+
+## 📧 Contact
+For questions or collaborations, contact **Eduardo Garnica** via GitHub.
+
+
