@@ -6,12 +6,13 @@ GenAI Poetry is an AI-powered poetry generator capable of creating poems in **En
 ## 🚀 Project Structure
 The repository contains the following directories:
 
-- **`backend/`** - Contains the FastAPI backend, including model inference logic and API endpoints.
-- **`frontend/`** - Contains the Streamlit web interface for user interaction.
+- **`webapp/backend/`** - Contains the FastAPI backend, including model inference logic and API endpoints.
+- **`webapp/frontend/`** - Contains the Streamlit web interface for user interaction.
 - **`webapp/`** - Main folder for deployment, containing backend, frontend, and Docker configuration.
-- **`model/`** - Stores the fine-tuned GPT-2 model (must be downloaded separately).
+- **`webapp/backend/model/`** - Stores the fine-tuned GPT-2 model (must be downloaded separately).
 - **`data/`** - Includes datasets used for training the model.
 - **`docs/`** - Documentation and architecture diagrams.
+- **`src/`** - Files of EDA and Training model
 
 ## 🛠️ Running the Project Locally
 ### **Prerequisites**
